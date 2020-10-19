@@ -1,17 +1,51 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import { Input, Menu } from 'semantic-ui-react';
+import {Link} from 'react-router-dom'
+// import {connect} from 'react-redux'
 
-const NavBar = () => {
+
+class NavBar extends React.Component {
+  state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+
   return (
-    <div className="navbar">
-      <ul>
-      <li> <NavLink to="/">Home</NavLink> </li>
-      <li> <NavLink to="/login">Login</NavLink> </li>
-      <li> <NavLink to="/newnote">New Note</NavLink> </li>
-      <li> <NavLink to="/editnote">Edit Note</NavLink> </li>
-      </ul> 
-    </div>
-  );
-};
+    <Menu>
+       <Menu.Item
+          name='home'
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+          as={Link} 
+          to='/home'
+          >Home
+        </Menu.Item>
+        <Menu.Item
+           name='newnote'
+           active={activeItem === 'newnote'}
+          onClick={this.handleItemClick}
+           as={Link} 
+           to='/newnote'
+            >New Note
+        </Menu.Item>
+        <Menu.Menu position='right'>
+          <Menu.Item>
+            <Input icon='search' placeholder='Search...' />
+          </Menu.Item>
+        <Menu.Item position='right'
+         name='login'
+         active={activeItem === 'logout'}
+            onClick={this.handleItemClick}
+         as={Link} 
+         to='/login'
+          >Logout
+       </Menu.Item>
+       </Menu.Menu>
+      </Menu>
+    );
+  }
+}
 
 export default NavBar;

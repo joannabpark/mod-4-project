@@ -1,34 +1,28 @@
 import React from 'react';
+import './App.css'
 import {
-  BrowserRouter as Router,
-  Route
+  Route, Switch
 } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Home from '../components/Home';
-
+import Login from '../components/Login';
+import NewNote from '../components/NewNote';
+import ErrorPage from '../components/ErrorPage';
 
 class App extends React.Component {
 
-  state = {
-    notes: []
-  }
-
-  componentDidMount(){
-    fetch('http://localhost:3000/notes')
-    .then(resp => resp.json())
-    .then(notes => {
-      return notes
-    })
-  }
-
   render() {
   return (
-    <Router>
       <div className="app">
         <NavBar />
+        <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/newnote" component={NewNote} />
         <Route exact path="/" component={Home} />
-      </div>
-    </Router>
+        <Route path="*" component={ErrorPage} />
+        </Switch>
+      </div>     
   )}
 }
 
