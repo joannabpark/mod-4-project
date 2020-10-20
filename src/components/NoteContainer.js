@@ -1,11 +1,12 @@
 import React from 'react';
 import Note from './Note';
+import { connect } from 'react-redux'
 
 class NoteContainer extends React.Component {
 
     renderNotes = () => {
         return this.props.notes.map(note => {
-             return <Note key={note.id} note={note}/>
+             return <Note note={note}/>
         })
       }
 
@@ -19,4 +20,10 @@ class NoteContainer extends React.Component {
 
 }
 
-export default NoteContainer;
+const mapStateToProps = (state) => {
+  return {
+    notes: state.notes
+  }
+}
+
+export default connect(mapStateToProps, null)(NoteContainer)
