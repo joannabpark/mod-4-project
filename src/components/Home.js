@@ -2,7 +2,6 @@ import React from 'react';
 import NoteContainer from './NoteContainer'
 import { connect } from 'react-redux';
 import { fetchNotesSuccess } from '../actions/notes';
-import { fetchUserSuccess } from '../actions/user';
 // import 'semantic-ui-css/semantic.min.css'
 import { Grid, Container } from 'semantic-ui-react'
 
@@ -44,8 +43,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  fetchNotesSuccess,
-  fetchUserSuccess
+  fetchNotesSuccess
 }
 
 

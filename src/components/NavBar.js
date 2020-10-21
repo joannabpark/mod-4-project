@@ -31,9 +31,9 @@ class NavBar extends React.Component {
             >New Note
         </Menu.Item>
         <Menu.Menu position='right'>
-          <Menu.Item>
+          {/* <Menu.Item>
             <Input icon='search' placeholder='Search...' />
-          </Menu.Item>
+          </Menu.Item> */}
         <Menu.Item position='right'
          name='login'
          active={activeItem === 'logout'}

@@ -1,12 +1,9 @@
 
-const initialState = []
 
-const user = (state=initialState, action) => {
+const user = (state={}, action) => {
     switch(action.type) {
-        // case "LOGIN_SUCCESS":
-        //     return action.user
-        case "FETCH_USER_SUCCESS":
-            return [...action.user]
+        case "LOGIN_SUCCESS":
+            return action.user
         default:
             return state
     }

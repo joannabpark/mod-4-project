@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button, Form, Container } from 'semantic-ui-react';
-import { fetchUserSuccess } from '../actions/user';
+import { loginSuccess } from '../actions/user';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 
@@ -10,20 +10,24 @@ const Login = (props) => {
   const { handleSubmit, register, errors, setValue } = useForm();
 
   const onSubmit = (data) => {
-      // const reqObj = {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(data)
-      // }
+      const reqObj = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
       
-      fetch('http://localhost:3000/users')
+      fetch('http://localhost:3000/users/login', reqObj)
       .then(resp => resp.json())
       .then(data => {
-          props.fetchUserSuccess(data)
+        if (data.error) {
+          alert(data.error)
+        } else {
+          props.loginSuccess(data)
           props.history.push('/home')
-      })
+      }
+    })
   }
 
   return (
@@ -61,7 +65,7 @@ const Login = (props) => {
 
 
 const mapDispatchToProps = {
-  fetchUserSuccess
+  loginSuccess
 }
 
 export default connect(null, mapDispatchToProps)(Login)

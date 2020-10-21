@@ -5,8 +5,9 @@ import { connect } from 'react-redux'
 class NoteContainer extends React.Component {
 
     renderNotes = () => {
-        return this.props.notes.map(note => {
-             return <Note note={note}/>
+      console.log(this.props.notes)
+        return this.props.notes.map(noteObj => {
+             return <Note note={noteObj}/>
         })
       }
 

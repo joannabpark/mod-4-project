@@ -9,6 +9,7 @@ import EditNote from '../components/EditNote';
 import Login from '../components/Login';
 import NewNote from '../components/NewNote';
 import ErrorPage from '../components/ErrorPage';
+import Note from '../components/Note';
 
 class App extends React.Component {
 
@@ -22,6 +23,7 @@ class App extends React.Component {
           <Route path="/home/edit/:id" component={EditNote} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/newnote" component={NewNote} />
+          <Route exact path="/home/:id" component={Note} />
           <Route exact path="/" component={Login} />
           <Route path="*" component={ErrorPage} />
         </Switch>
