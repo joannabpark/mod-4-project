@@ -1,57 +1,95 @@
 import React from 'react';
 import { Button, Form, Container } from 'semantic-ui-react';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { postNoteSuccess } from '../actions/notes'
-import { RHFInput } from 'react-hook-form-input'
+// import { RHFInput } from 'react-hook-form-input'
 
-const NewNote = (props) => {
+class NewNote extends React.Component {
 
-  const { handleSubmit, register, errors } = useForm();
+  state = {
+    id: "",
+    title: "",
+    content: "",
+    error: null
+  }
 
-  const onSubmit = (data) => {
+  componentDidMount(){
+    if(!this.props.user.id) {
+      this.props.history.push('/login')
+    } else {
+      const path = this.props.location.pathname.split("/")
+        const id = parseInt(path[path.length - 1])
+        // this.setInitialState(id)
+    }
+  }
+
+  // const { handleSubmit, register, errors } = useForm();
+
+  handleInputChange = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
       const reqObj = {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          id: `${this.props.user.id}`
         },
         body: JSON.stringify({
-          ...data,
-          user_id: 1
+                id: this.state.id,
+                title: this.state.title,
+                content: this.state.content,
+                user_id: 1
         })
       }
       
       fetch('http://localhost:3000/notes', reqObj)
       .then(resp => resp.json())
       .then(data => {
-          props.postNoteSuccess(data)
-          props.history.push(`/home`)
+        if (data.error) {
+          this.setState({
+            error: data.error
+          })
+        } else {
+          this.props.postNoteSuccess(data)
+          this.props.history.push(`/home`)
+        }
       })
   }
 
+  render() {
   return (
     <div>
       <Container>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={this.handleSubmit}>
         <Form.Group></Form.Group>
             <Form.Group widths='equal'>
-            <RHFInput
+            <input
                     as={<Form.Input />}
                  type="text" 
                  name="title" 
+                 onChange={this.handleInputChange}
+                 value={this.state.title}
                  placeholder="title"
-                 register={register({ required: true })}
-                  error={errors.title && 'Enter a title'}
+                //  register={register({ required: true })}
+                  // error={errors.title && 'Enter a title'}
                   />
                   </Form.Group>
                     <Form.Group widths='equal'>
-                  <RHFInput
+                  <textarea
                     as={<Form.Input />}
                  type="area" 
                  name="content" 
+                 onChange={this.handleInputChange}
+                 value={this.state.content}
                  placeholder="new note..."
-                 register={register({ required: true })}
-                  error={errors.content && 'must have content'}
+                //  register={register({ required: true })}
+                  // error={errors.content && 'must have content'}
                  />
                  </Form.Group>
                 <Form.Field control={Button}>Create Note</Form.Field>
@@ -60,10 +98,12 @@ const NewNote = (props) => {
     </div>
   );
 }
+}
 
 const mapStateToProps = (state) => {
   return {
-    notes: state.notes
+    notes: state.notes,
+    user: state.user
   }
 }
 

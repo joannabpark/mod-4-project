@@ -1,7 +1,8 @@
 import React from 'react'
 import { Input, Menu } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
-// import {connect} from 'react-redux'
+import { logoutSuccess } from '../actions/user'
+import {connect} from 'react-redux'
 
 
 class NavBar extends React.Component {
@@ -34,13 +35,23 @@ class NavBar extends React.Component {
           {/* <Menu.Item>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item> */}
-        <Menu.Item position='right'
-         name='login'
-         active={activeItem === 'logout'}
-            onClick={this.handleItemClick}
-         as={Link} 
-         to='/login'
-          >Logout
+        <Menu.Item position='right'>
+              {
+                this.props.user.id
+                ?
+                <Link to='/login' className="ui button" onClick={this.props.logoutSuccess} >
+                  Logout
+                </Link>
+                : 
+                <Link to='/login' className="ui button">
+                  Login
+                </Link>
+              }
+        {/* //  name='login'
+        //  active={activeItem === 'logout'}
+        //     onClick={this.handleItemClick}
+        //  as={Link} 
+        //  to='/login' */}
        </Menu.Item>
        </Menu.Menu>
       </Menu>
@@ -48,4 +59,15 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = {
+  logoutSuccess
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

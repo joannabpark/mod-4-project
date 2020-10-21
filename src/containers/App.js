@@ -10,6 +10,7 @@ import Login from '../components/Login';
 import NewNote from '../components/NewNote';
 import ErrorPage from '../components/ErrorPage';
 import Note from '../components/Note';
+// import NoteContainer from '../components/NoteContainer'
 
 class App extends React.Component {
 
@@ -24,7 +25,7 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/newnote" component={NewNote} />
           <Route exact path="/home/:id" component={Note} />
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={Home} />
           <Route path="*" component={ErrorPage} />
         </Switch>
       </div>     

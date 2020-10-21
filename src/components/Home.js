@@ -8,11 +8,15 @@ import { Grid, Container } from 'semantic-ui-react'
 class Home extends React.Component {
 
   componentDidMount(){
-    fetch('http://localhost:3000/notes')
+    if(!this.props.user.id) {
+      this.props.history.push('/login')
+    } else {
+      fetch('http://localhost:3000/notes')
     .then(resp => resp.json())
     .then(notes => {
       this.props.fetchNotesSuccess(notes)
     })
+    }
   }
 
   render() {
