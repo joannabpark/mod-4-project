@@ -4,6 +4,8 @@ import { Button, Form, Container } from 'semantic-ui-react';
 import { loginSuccess } from '../actions/user';
 // import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+
 
 class Login extends React.Component {
 
@@ -75,7 +77,8 @@ class Login extends React.Component {
                 // })}
                  />
                  {/* {errors.password && "password must be 5-8 characters"} */}
-                <Form.Field control={Button}>Login</Form.Field>            
+                <Form.Field control={Button}>Login</Form.Field>  
+                <Button as={Link} to={'/newuser'} >Create Account</Button>          
               </Form.Group>
            </Form>
       </Container>

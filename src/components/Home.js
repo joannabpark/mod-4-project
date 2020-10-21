@@ -27,7 +27,7 @@ class Home extends React.Component {
           <Grid.Row>
           </Grid.Row>
           <Grid.Row >
-            <Grid.Column width={6}><h2>Notes</h2></Grid.Column>
+            <Grid.Column width={6}><h2>Things to do today</h2></Grid.Column>
           </Grid.Row>
           <Grid.Row> 
           <Grid.Column width={12}><NoteContainer notes={this.props.notes}/></Grid.Column>

@@ -44,7 +44,7 @@ class NewNote extends React.Component {
                 id: this.state.id,
                 title: this.state.title,
                 content: this.state.content,
-                user_id: 1
+                user_id: this.props.user.id
         })
       }
       

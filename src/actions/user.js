@@ -11,3 +11,10 @@ export const logoutSuccess = () => {
     type: 'LOGOUT_SUCCESS',
   }
 }
+
+export const createUserSuccess = (user) => {
+  return {
+    type: "CREATE_USER_SUCCESS",
+    user: user,
+  };
+};
