@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Button, Form } from "semantic-ui-react";
 import { createUserSuccess } from "../actions/user";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 class NewUser extends React.Component {
@@ -34,6 +34,7 @@ class NewUser extends React.Component {
     fetch('http://localhost:3000/users', reqObj)
     .then(resp => resp.json())
     .then(data => {
+      console.log(data)
         if (data.error) {
             this.setState({
               error: data.error

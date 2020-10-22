@@ -10,6 +10,11 @@ class NavBar extends React.Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+  handleLogout = () => {
+    this.props.logoutSuccess()
+    localStorage.removeItem('app_token')
+  }
+
   render() {
     const { activeItem } = this.state
 
@@ -39,7 +44,7 @@ class NavBar extends React.Component {
               {
                 this.props.user.id
                 ?
-                <Link to='/login' className="ui button" onClick={this.props.logoutSuccess} >
+                <Link to='/login' className="ui button" onClick={this.handleLogout} >
                   Logout
                 </Link>
                 : 
