@@ -14,6 +14,7 @@ const ThankYou = () => {
         <Message.Item>Raza, for all the times you've rescued me</Message.Item>        
         <Message.Item>Ignas, for showing me your ways</Message.Item>
         <Message.Item>Charlie, for helping me with the show page</Message.Item>
+        <Message.Item>Nick, for helping me with the logout button problem</Message.Item>
         <Message.Item>everyone else, for the emotional support</Message.Item>
       </Message.List>
       </Message>

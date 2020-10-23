@@ -2,35 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteNote } from '../actions/notes'
 import moment from 'moment';
-import { Link } from "react-router-dom";
-
+import { Card } from 'semantic-ui-react'
 
 class Note extends React.Component {
 
+  handleClick = () => {
+    this.props.history.push(`/home/${this.props.note.id}`)
+  }
 
     render() {
 
     return ( 
-      <Link to={`/home/${this.props.note.id}`}>
-      <div className="ui centered cards">
-      <div className="ui card">
-        <div className="content">
-          <div className="header">{this.props.note.title}</div>
-          <div className="meta">created {moment(this.props.note.created_at).fromNow()}</div>
-          <div className="description">{this.props.note.content.slice(0,25)}...</div>
-          </div>
-          </div>
-          </div>
-          </Link>
+      <Card centered
+        onClick={this.handleClick}
+        header={this.props.note.title}
+        meta={moment(this.props.note.created_at).fromNow()}
+        description={this.props.note.content.slice(0,25)}
+       />
      )
     }
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//       notes: state.notes
-//     }
-//   }
   
   const mapDispatchToProps = {
     deleteNote

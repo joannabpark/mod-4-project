@@ -16,28 +16,28 @@ class ShowNote extends React.Component {
     return (
         <Container>
             <br></br>
-        <div className="ui centered card">
-        <div className="content">
-            <div className="header">{this.state.note.title}</div>
-            <div className="meta">updated {moment(this.state.note.updated_at).fromNow()}</div>
-            <div className="description">{this.state.note.content}</div>
-        </div>
-        <div className="ui animated button" >
-        <Button animated='fade' as={Link} to={`/home/${this.state.note.id}/form`}>
-      <Button.Content visible><i className="mail icon" ></i></Button.Content>
-      <Button.Content hidden>email</Button.Content>
-    </Button>
-    <Button animated='fade' as={Link} to={`/home/edit/${this.state.note.id}`}>
-      <Button.Content visible><i className="edit icon" ></i></Button.Content>
-      <Button.Content hidden>edit</Button.Content>
-    </Button>
-    <Button animated='fade' onClick={() => this.deleteNote(this.state.note.id)}>
-      <Button.Content visible><i className="trash icon" ></i></Button.Content>
-      <Button.Content hidden>delete</Button.Content>
-    </Button>
-  </div>
-        </div>
-        </Container>
+             <div className="ui centered card">
+              <div className="content">
+               <div className="header">{this.state.note.title}</div>
+                <div className="meta">updated {moment(this.state.note.updated_at).fromNow()}</div>
+               <div className="description">{this.state.note.content}</div>
+              </div>
+              <div className="ui animated button" >
+                 <Button animated='fade' as={Link} to={`/home/${this.state.note.id}/form`}>
+                    <Button.Content visible><i className="mail icon"></i></Button.Content>
+                   <Button.Content hidden style={{ color: 'hotpink'}}>email</Button.Content>
+                 </Button>
+                <Button animated='fade' as={Link} to={`/home/edit/${this.state.note.id}`}>
+                    <Button.Content visible><i className="edit icon" ></i></Button.Content>
+                    <Button.Content hidden style={{ color: 'hotpink'}}>edit</Button.Content>
+                 </Button>
+                <Button animated='fade' onClick={() => this.deleteNote(this.state.note.id)}>
+                    <Button.Content visible><i className="trash icon" ></i></Button.Content>
+                    <Button.Content hidden style={{ color: 'hotpink'}}>delete</Button.Content>
+               </Button>
+             </div>
+          </div>
+       </Container>
     )
 }
 
@@ -80,12 +80,6 @@ deleteNote = (id) => {
     );
   }
 };
-
-// const mapStateToProps = (state) =>  {
-//     return {
-//         note: [state.notes]
-//     }
-// }
 
 const mapDispatchToProps = {
     deleteNote

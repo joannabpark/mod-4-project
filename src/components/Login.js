@@ -2,10 +2,8 @@
 import React from 'react';
 import { Grid, Button, Form, Container } from 'semantic-ui-react';
 import { loginSuccess } from '../actions/user';
-// import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-
 
 class Login extends React.Component {
 
@@ -20,8 +18,6 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
     })
   }
-
-  // { handleSubmit, register, errors, setValue } = this.useForm();
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -53,42 +49,41 @@ class Login extends React.Component {
   return (
     <div>
       <Container >
-      <Grid>
-        <Grid.Row centered>
+        <Grid>
+          <Grid.Row centered>
             <Grid.Column width={6}>
-      { this.state.error && <h4 style={{ color: 'red'}}>{this.state.error}</h4> }
-        <Form onSubmit={this.handleSubmit}>
-          <br></br>
-            <Form.Input
-                 icon='user'
-                 iconPosition='left'
-                 type="text" 
-                 placeholder="username"
-                 name={'username'} onChange={this.handleInputChange} value={this.state.username} 
+            { this.state.error && <h4 style={{ color: 'red'}}>{this.state.error}</h4> }
+              <Form onSubmit={this.handleSubmit}>
+                 <br></br>
+                  <Form.Input
+                      icon='user'
+                      iconPosition='left'
+                       type="text" 
+                      placeholder="username"
+                       name={'username'} onChange={this.handleInputChange} value={this.state.username} 
                   />
                   <Form.Input
-                 icon='lock'
-                 iconPosition='left'
-                 type="password" 
-                 name={'password'} onChange={this.handleInputChange} value={this.state.password} 
-                 placeholder="password" 
+                       icon='lock'
+                       iconPosition='left'
+                      type="password" 
+                       name={'password'} onChange={this.handleInputChange} value={this.state.password} 
+                       placeholder="password" 
                  />
-                 <div style={{textAlign: "center"}}>
-                <Button><i aria-hidden="true" className="sign in icon"></i></Button>          
-                </div>
-                <br></br> <br></br>
-                {/* <Form.Field  control={Button}>Login</Form.Field>   */}
-                <div style={{textAlign: "center"}}>
-                <Button as={Link} to={'/newuser'} >Create Account</Button>          
-                </div>
-           </Form>
-           </Grid.Column>
-        </Grid.Row>
-      </Grid>
-      </Container>
-    </div>
-  );
-}
+                   <div style={{textAlign: "center"}}>
+                     <Button><i aria-hidden="true" className="sign in icon"></i></Button>          
+                   </div>
+                     <br></br> <br></br>
+                   <div style={{textAlign: "center"}}>
+                     <Button as={Link} to={'/newuser'} >Create Account</Button>          
+                   </div>
+                 </Form>
+               </Grid.Column>
+            </Grid.Row>
+        </Grid>
+     </Container>
+   </div>
+   );
+  }
 }
 
 

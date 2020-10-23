@@ -3,9 +3,6 @@ import React from "react";
 import { Grid, Container, Button, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { editNoteSuccess } from "../actions/notes";
-// import { useForm } from 'react-hook-form';
-// import { RHFInput } from 'react-hook-form-input'
-
 
 class EditNote extends React.Component {
 
@@ -65,8 +62,8 @@ class EditNote extends React.Component {
     render() {
     return (
         <div>
-         <Container>
-        <br></br>
+        <Container>
+           <br></br>
           <Grid>
             <Grid.Row centered>
               <Grid.Column width={8}>
@@ -94,7 +91,7 @@ class EditNote extends React.Component {
                    </Form.Group>
                    <br></br>
                    <div style={{textAlign: "center"}}>
-                       <Button>Update Note</Button>
+                       <Button>Save</Button>
                   </div>
                 </Form>
              </Grid.Column>
@@ -102,10 +99,9 @@ class EditNote extends React.Component {
       </Grid>
   </Container>
 </div>
-        )
-    }
+    )
+  }
 }
-
 
 const mapStateToProps = (state) => {
     return {

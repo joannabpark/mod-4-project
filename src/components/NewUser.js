@@ -40,12 +40,12 @@ class NewUser extends React.Component {
               error: data.error
             })
           } else {
+            // localStorage.setItem('app_token', data.token)
             this.props.createUserSuccess(data)
             this.props.history.push(`/home`)
           }
         })
     }
-
 
     render() {
         return(

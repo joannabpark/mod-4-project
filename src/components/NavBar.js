@@ -48,7 +48,7 @@ class NavBar extends React.Component {
         <Menu.Item
            name='newnote'
            active={activeItem === 'newnote'}
-          onClick={this.handleItemClick}
+           onClick={this.handleItemClick}
            as={Link} 
            to='/newnote'
             ><i aria-hidden="true" className="plus icon"></i>New Note
@@ -57,7 +57,7 @@ class NavBar extends React.Component {
           <Menu.Item>
             <Input onChange={this.handleChange} icon='search' placeholder='Search...' />
           </Menu.Item>
-        <Menu.Item position='right'>
+          <Menu.Item position='right'>
               {
                 this.props.user.id
                 ?
@@ -65,7 +65,7 @@ class NavBar extends React.Component {
                 <i aria-hidden="true" className="sign out icon"></i>Logout
                 </Link>
                 : 
-                <Button onClick={this.start} as={Link} to='/thankyou' className="ui button">
+                <Button onClick={this.start} as={Link} to='/thankyou' className="ui button" style={{ color: 'hotpink'}}>
                   <i aria-hidden="true" className="jenkins icon"></i>boo!
                 </Button>
               }
@@ -74,9 +74,9 @@ class NavBar extends React.Component {
         //     onClick={this.handleItemClick}
         //  as={Link} 
         //  to='/login' */}
-       </Menu.Item>
+          </Menu.Item>
        </Menu.Menu>
-      </Menu>
+    </Menu>
     );
   }
 }
@@ -92,6 +92,5 @@ const mapDispatchToProps = {
   logoutSuccess,
   searchNotes
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

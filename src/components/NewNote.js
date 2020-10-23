@@ -15,9 +15,15 @@ class NewNote extends React.Component {
   }
 
   componentDidMount(){
-    if(!this.props.user.id) {
+
+    const token = localStorage.getItem('app_token')
+    // console.log(token)
+    if (!token){
       this.props.history.push('/login')
-    } else {
+    // }
+    // if(!this.props.user.id) {
+    //   this.props.history.push('/login')
+    // } else {
       // const path = this.props.location.pathname.split("/")
         // const id = parseInt(path[path.length - 1])
         // this.setInitialState(id)
@@ -99,7 +105,7 @@ class NewNote extends React.Component {
                  </Form.Group>
                  <br></br>
                  <div style={{textAlign: "center"}}>
-                <Button>Create Note</Button>
+                <Button>Create</Button>
                 </div>
            </Form>
            </Grid.Column>

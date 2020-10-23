@@ -39,7 +39,7 @@ class NoteContainer extends React.Component {
     renderNotes = () => {
       let notesList = this.props.notes.filter(notes => notes.title.toLowerCase().includes(this.props.search.toLowerCase()))
       return notesList.map((note, index) => (
-        <Note key={index} note={note} />
+        <Note key={index} note={note} history={this.props.history} />
           ))
         }
 
@@ -54,11 +54,11 @@ class NoteContainer extends React.Component {
                     </select>
                  </div> */}
                  <br></br>
-                 {this.renderNotes()}
+                   {this.renderNotes()}
                  <br></br>
-              </div>
+            </div>
         )
-    }
+      }
   }
 
 const mapStateToProps = (state) => {
