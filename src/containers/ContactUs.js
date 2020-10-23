@@ -35,7 +35,10 @@ renderForm = () => {
               <textarea as={<Form.Input />} name="message" value={this.state.content}/>
              </Form.Field>
              <div style={{textAlign: "center"}}>
-               <Button type="submit" value="Send">Send</Button>
+             <Button animated='fade' type="submit" value="Send">
+                    <Button.Content visible><i className="send icon" ></i></Button.Content>
+                    <Button.Content hidden style={{ color: 'hotpink'}}>send</Button.Content>
+                 </Button>
              </div>
             </Form>
           </Grid.Column>

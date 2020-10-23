@@ -91,7 +91,10 @@ class EditNote extends React.Component {
                    </Form.Group>
                    <br></br>
                    <div style={{textAlign: "center"}}>
-                       <Button>Save</Button>
+                   <Button animated='fade'>
+                       <Button.Content visible><i aria-hidden="true" className="save icon"></i></Button.Content>
+                        <Button.Content hidden style={{ color: 'hotpink'}}>save</Button.Content>
+                  </Button>
                   </div>
                 </Form>
              </Grid.Column>

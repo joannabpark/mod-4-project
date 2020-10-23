@@ -65,9 +65,13 @@ class NavBar extends React.Component {
                 <i aria-hidden="true" className="sign out icon"></i>Logout
                 </Link>
                 : 
-                <Button onClick={this.start} as={Link} to='/thankyou' className="ui button" style={{ color: 'hotpink'}}>
-                  <i aria-hidden="true" className="jenkins icon"></i>boo!
-                </Button>
+                <Button animated='fade' as={Link} to='/thankyou'>
+                   <Button.Content visible><i aria-hidden="true" className="jenkins icon"></i></Button.Content>
+                    <Button.Content hidden style={{ color: 'hotpink'}}>Boo!</Button.Content>
+              </Button>
+                // <Button onClick={this.start} as={Link} to='/thankyou' className="ui button" style={{ color: 'hotpink'}}>
+                //   <i aria-hidden="true" className="jenkins icon"></i>boo!
+                // </Button>
               }
         {/* //  name='login'
         //  active={activeItem === 'logout'}

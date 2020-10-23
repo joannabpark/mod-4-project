@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteNote } from '../actions/notes'
 import moment from 'moment';
-import { Card } from 'semantic-ui-react'
+import { Popup, Card } from 'semantic-ui-react'
 
 class Note extends React.Component {
 
@@ -13,15 +13,15 @@ class Note extends React.Component {
     render() {
 
     return ( 
-      <Card centered
+      <Popup content='view note' trigger={<Card visible centered
         onClick={this.handleClick}
         header={this.props.note.title}
         meta={moment(this.props.note.created_at).fromNow()}
         description={this.props.note.content.slice(0,25)}
-       />
-     )
+        />} />
+      )
     }
-}
+  }
   
   const mapDispatchToProps = {
     deleteNote

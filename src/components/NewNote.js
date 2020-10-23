@@ -105,7 +105,10 @@ class NewNote extends React.Component {
                  </Form.Group>
                  <br></br>
                  <div style={{textAlign: "center"}}>
-                <Button>Create</Button>
+                 <Button animated='fade'>
+                   <Button.Content visible><i aria-hidden="true" className="plus square outline icon"></i></Button.Content>
+                    <Button.Content hidden style={{ color: 'hotpink'}}>create</Button.Content>
+              </Button>
                 </div>
            </Form>
            </Grid.Column>
