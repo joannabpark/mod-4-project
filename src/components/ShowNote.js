@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import { deleteNote } from '../actions/notes'
 import moment from 'moment';
-import { Container, Button } from 'semantic-ui-react'
+import { Icon, Container, Button } from 'semantic-ui-react'
 // import ContactUs from '../containers/ContactUs'
 
 class ShowNote extends React.Component {
@@ -12,13 +12,19 @@ class ShowNote extends React.Component {
         note: ''
     }
 
+    // handleClick = () => {
+
+    // }
+
     renderNote = () => {
     return (
         <Container>
             <br></br>
-             <div className="ui centered card">
+             <div className="ui centered card"> 
               <div className="content">
-               <div className="header">{this.state.note.title}</div>
+               <div className="header">{this.state.note.title}    
+               {this.state.note.favorite ? <Icon name='star outline' /> : null }
+                </div>
                 <div className="meta">updated {moment(this.state.note.updated_at).fromNow()}</div>
                <div className="description">{this.state.note.content}</div>
               </div>

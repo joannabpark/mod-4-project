@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 class Login extends React.Component {
 
   state={
-    username: 'jpark',
-    password: '12345',
+    username: '',
+    password: '',
     error: null
   }
 
@@ -70,11 +70,17 @@ class Login extends React.Component {
                        placeholder="password" 
                  />
                    <div style={{textAlign: "center"}}>
-                     <Button><i aria-hidden="true" className="sign in icon"></i></Button>          
+                      <Button animated='fade'>
+                         <Button.Content visible><i aria-hidden="true" className="sign in icon"></i></Button.Content>
+                         <Button.Content hidden style={{ color: 'hotpink'}}>login</Button.Content>
+                     </Button>         
                    </div>
                      <br></br> <br></br>
                    <div style={{textAlign: "center"}}>
-                     <Button as={Link} to={'/newuser'} >Create Account</Button>          
+                     <Button animated='fade'>
+                         <Button.Content visible>sign up</Button.Content>
+                         <Button.Content hidden as={Link} to={'/newuser'} style={{ color: 'hotpink'}}>sign up</Button.Content>
+                     </Button>         
                    </div>
                  </Form>
                </Grid.Column>

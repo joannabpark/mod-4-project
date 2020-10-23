@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Button, Form, Container } from 'semantic-ui-react';
+import { Checkbox, Grid, Button, Form, Container } from 'semantic-ui-react';
 // import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { postNoteSuccess } from '../actions/notes'
@@ -37,6 +37,10 @@ class NewNote extends React.Component {
         [e.target.name]: e.target.value
     })
   }
+
+  // handleFavChange = () => {
+
+  // }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -104,6 +108,8 @@ class NewNote extends React.Component {
                  />
                  </Form.Group>
                  <br></br>
+                 <Checkbox onChange={this.handleFavChange} label='favorite' />
+                 <br></br><br></br>
                  <div style={{textAlign: "center"}}>
                  <Button animated='fade'>
                    <Button.Content visible><i aria-hidden="true" className="plus square outline icon"></i></Button.Content>

@@ -73,6 +73,10 @@ class NewUser extends React.Component {
                          value={this.state.password}
                         />
                   <div style={{textAlign: "center"}}>
+                  {/* <Button animated='fade'>
+                         <Button.Content visible type="submit">Create Account</Button.Content>
+                         <Button.Content hidden style={{ color: 'hotpink'}}><i aria-hidden="true" className="plus icon"></i></Button.Content>
+                     </Button>   */}
                   <Button type="submit">Create Account</Button>
                   </div>
                </Form>

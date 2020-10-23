@@ -43,7 +43,7 @@ class NavBar extends React.Component {
           onClick={this.handleItemClick}
           as={Link} 
           to='/home'
-          ><i aria-hidden="true" className="home icon"></i>Home
+          ><i aria-hidden="true" className="home icon"></i>home
         </Menu.Item>
         <Menu.Item
            name='newnote'
@@ -51,7 +51,7 @@ class NavBar extends React.Component {
            onClick={this.handleItemClick}
            as={Link} 
            to='/newnote'
-            ><i aria-hidden="true" className="plus icon"></i>New Note
+            ><i aria-hidden="true" className="plus icon"></i>new note
         </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>
@@ -65,19 +65,11 @@ class NavBar extends React.Component {
                 <i aria-hidden="true" className="sign out icon"></i>Logout
                 </Link>
                 : 
-                <Button animated='fade' as={Link} to='/thankyou'>
+                <Button animated='fade' onClick={this.start} as={Link} to='/thankyou'>
                    <Button.Content visible><i aria-hidden="true" className="jenkins icon"></i></Button.Content>
                     <Button.Content hidden style={{ color: 'hotpink'}}>Boo!</Button.Content>
-              </Button>
-                // <Button onClick={this.start} as={Link} to='/thankyou' className="ui button" style={{ color: 'hotpink'}}>
-                //   <i aria-hidden="true" className="jenkins icon"></i>boo!
-                // </Button>
+              </Button>    
               }
-        {/* //  name='login'
-        //  active={activeItem === 'logout'}
-        //     onClick={this.handleItemClick}
-        //  as={Link} 
-        //  to='/login' */}
           </Menu.Item>
        </Menu.Menu>
     </Menu>

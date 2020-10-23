@@ -9,7 +9,8 @@ class EditNote extends React.Component {
     state = {
         id: "",
         title: "",
-        content: ""
+        content: "",
+        // user_id: ""
     }
 
     componentDidMount() {
@@ -43,7 +44,7 @@ class EditNote extends React.Component {
                 id: this.state.id,
                 title: this.state.title,
                 content: this.state.content,
-                user_id: 1
+                user_id: this.state.user_id
             })
         }
         fetch(`http://localhost:3000/notes/${this.state.id}`, reqObj)
@@ -53,7 +54,8 @@ class EditNote extends React.Component {
             this.setState({
                 id: this.state.id,
                 title: this.state.title,
-                content: this.state.content
+                content: this.state.content,
+                // user_id: this.state.user_id
             })
             this.props.history.push(`/home`)
         })
@@ -91,10 +93,7 @@ class EditNote extends React.Component {
                    </Form.Group>
                    <br></br>
                    <div style={{textAlign: "center"}}>
-                   <Button animated='fade'>
-                       <Button.Content visible><i aria-hidden="true" className="save icon"></i></Button.Content>
-                        <Button.Content hidden style={{ color: 'hotpink'}}>save</Button.Content>
-                  </Button>
+                       <Button>Save</Button>
                   </div>
                 </Form>
              </Grid.Column>
