@@ -12,14 +12,14 @@ class Note extends React.Component {
 
     return ( 
       <Link to={`/home/${this.props.note.id}`}>
-      <div class="ui centered cards">
-      <a class="ui card"  >
-        <div class="content">
-          <div class="header">{this.props.note.title}</div>
-          <div class="meta">created {moment(this.props.note.created_at).fromNow()}</div>
-          <div class="description">{this.props.note.content.slice(0,25)}...</div>
+      <div className="ui centered cards">
+      <div className="ui card">
+        <div className="content">
+          <div className="header">{this.props.note.title}</div>
+          <div className="meta">created {moment(this.props.note.created_at).fromNow()}</div>
+          <div className="description">{this.props.note.content.slice(0,25)}...</div>
           </div>
-          </a>
+          </div>
           </div>
           </Link>
      )

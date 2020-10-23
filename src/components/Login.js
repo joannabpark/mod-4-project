@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Form, Container } from 'semantic-ui-react';
+import { Grid, Button, Form, Container } from 'semantic-ui-react';
 import { loginSuccess } from '../actions/user';
 // import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
@@ -52,36 +52,39 @@ class Login extends React.Component {
 
   return (
     <div>
-      <Container>
+      <Container >
+      <Grid>
+        <Grid.Row centered>
+            <Grid.Column width={6}>
       { this.state.error && <h4 style={{ color: 'red'}}>{this.state.error}</h4> }
         <Form onSubmit={this.handleSubmit}>
-            <Form.Group widths='equal'>
-                 <input 
+          <br></br>
+            <Form.Input
+                 icon='user'
+                 iconPosition='left'
                  type="text" 
-                //  name="username" 
                  placeholder="username"
                  name={'username'} onChange={this.handleInputChange} value={this.state.username} 
-                //  setValue={setValue}
-                //  ref={register({
-                //    required: true, minLength: 5, maxLength: 10
-                //  })}
                   />
-                  {/* {errors.username && "username must be 5-10 characters"} */}
-                 <input 
+                  <Form.Input
+                 icon='lock'
+                 iconPosition='left'
                  type="password" 
-                //  name="password" 
                  name={'password'} onChange={this.handleInputChange} value={this.state.password} 
                  placeholder="password" 
-                //  setValue={setValue}
-                //  ref={register({
-                //   required: true, minLength: 5, maxLength: 8
-                // })}
                  />
-                 {/* {errors.password && "password must be 5-8 characters"} */}
-                <Form.Field control={Button}>Login</Form.Field>  
+                 <div style={{textAlign: "center"}}>
+                <Button><i aria-hidden="true" className="sign in icon"></i></Button>          
+                </div>
+                <br></br> <br></br>
+                {/* <Form.Field  control={Button}>Login</Form.Field>   */}
+                <div style={{textAlign: "center"}}>
                 <Button as={Link} to={'/newuser'} >Create Account</Button>          
-              </Form.Group>
+                </div>
            </Form>
+           </Grid.Column>
+        </Grid.Row>
+      </Grid>
       </Container>
     </div>
   );

@@ -7,9 +7,9 @@ import { currentUser } from '../actions/user'
 class NoteContainer extends React.Component {
 
   componentDidMount(){
-
+   
     const token = localStorage.getItem('app_token')
-    console.log(token)
+    // console.log(token)
     if (!token){
       this.props.history.push('/login')
     } else {
@@ -18,10 +18,9 @@ class NoteContainer extends React.Component {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
-        }
+        },
       }
-
-      fetch('http://localhost:3000/current_user', reqObj)
+      fetch('http://localhost:3000/current_session', reqObj)
       .then(resp => resp.json())
       .then(data => {
         if (data.user) {
@@ -29,10 +28,10 @@ class NoteContainer extends React.Component {
           fetch('http://localhost:3000/notes')
           .then(resp => resp.json())
           .then(notes => {
-            this.props.fetchNotesSuccess(notes)
+            let newNotes = notes.filter(note => note.user_id === data.user.id)
+            this.props.fetchNotesSuccess(newNotes)
           })
         }
-        console.log('data', data)
       })
     }
   }
@@ -47,13 +46,13 @@ class NoteContainer extends React.Component {
     render () {
         return (
             <div className='App'>
-               <div>
+               {/* <div>
                  <select >
                     <option value="" disabled selected>Sort by</option>
                      <option >Newest</option>
                      <option >Oldest</option>
                     </select>
-                 </div>
+                 </div> */}
                  <br></br>
                  {this.renderNotes()}
                  <br></br>

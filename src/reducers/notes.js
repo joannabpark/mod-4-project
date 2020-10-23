@@ -14,7 +14,6 @@ const notes = (state=initialState, action) => {
         //     return notes
         case "EDIT_NOTE_SUCCESS":
         case "POST_NOTE_SUCCESS":
-            // return [...state, action.note]
         case "DELETE_NOTE":
             return state.filter(n => n.id !== action.id)
         default:

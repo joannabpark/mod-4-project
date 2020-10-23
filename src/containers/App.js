@@ -11,8 +11,9 @@ import NewNote from '../components/NewNote';
 import ErrorPage from '../components/ErrorPage';
 import ShowNote from '../components/ShowNote';
 import NewUser from '../components/NewUser'
-import NoteContainer from '../components/NoteContainer'
-import Form from './ContactUs'
+import NoteContainer from '../components/NoteContainer';
+import Form from './ContactUs';
+import ThankYou from './thankyou'
 
 class App extends React.Component {
 
@@ -29,6 +30,7 @@ class App extends React.Component {
           <Route exact path="/newnote" component={NewNote} />
           <Route exact path="/home/:id" component={ShowNote} />
           <Route exact path="/newuser" component={NewUser} />
+          <Route exact path="/thankyou" component={ThankYou} />
           <Route exact path="/" component={Login} />
           <Route path="*" component={ErrorPage} />
         </Switch>

@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Container, Button, Form } from "semantic-ui-react";
+import { Grid, Container, Button, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { editNoteSuccess } from "../actions/notes";
 // import { useForm } from 'react-hook-form';
@@ -65,39 +65,43 @@ class EditNote extends React.Component {
     render() {
     return (
         <div>
-        <Container>
-          <Form onSubmit={this.handleSubmit}>
-          <Form.Group></Form.Group>
-              <Form.Group widths='equal'>
-              <input
+         <Container>
+        <br></br>
+          <Grid>
+            <Grid.Row centered>
+              <Grid.Column width={8}>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group widths='equal'>
+                       <input
+                       as={<Form.Input />}
+                       type="text" 
+                        name="title" 
+                        placeholder="title"
+                       value={this.state.title}
+                       onChange={this.handleChange}
+                      />
+                  </Form.Group>
+                    <br></br>
+                  <Form.Group widths='equal'>
+                     <textarea
                       as={<Form.Input />}
-                   type="text" 
-                   name="title" 
-                   placeholder="title"
-                   value={this.state.title}
-                   onChange={this.handleChange}
-                //    register={register({ required: true })}
-                    // setValue={setValue}
-                    // error={errors.title && 'Enter a title'}
-                    />
-                    </Form.Group>
-                      <Form.Group widths='equal'>
-                    <textarea
-                      as={<Form.Input />}
-                   type="area" 
-                   name="content" 
-                   placeholder="new note..."
-                   value={this.state.content}
-                   onChange={this.handleChange}
-                //    register={register({ required: true })}
-                    // setValue={setValue}
-                    // error={errors.content && 'must have content'}
-                   />
+                      type="area" 
+                      name="content" 
+                      placeholder="new note..."
+                      value={this.state.content}
+                      onChange={this.handleChange}
+                     />
                    </Form.Group>
-                  <Form.Field control={Button}>Update Note</Form.Field>
-             </Form>
-        </Container>
-      </div>
+                   <br></br>
+                   <div style={{textAlign: "center"}}>
+                       <Button>Update Note</Button>
+                  </div>
+                </Form>
+             </Grid.Column>
+          </Grid.Row>
+      </Grid>
+  </Container>
+</div>
         )
     }
 }

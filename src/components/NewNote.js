@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Container } from 'semantic-ui-react';
+import { Grid, Button, Form, Container } from 'semantic-ui-react';
 // import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { postNoteSuccess } from '../actions/notes'
@@ -18,8 +18,8 @@ class NewNote extends React.Component {
     if(!this.props.user.id) {
       this.props.history.push('/login')
     } else {
-      const path = this.props.location.pathname.split("/")
-        const id = parseInt(path[path.length - 1])
+      // const path = this.props.location.pathname.split("/")
+        // const id = parseInt(path[path.length - 1])
         // this.setInitialState(id)
     }
   }
@@ -66,6 +66,10 @@ class NewNote extends React.Component {
   return (
     <div>
       <Container>
+        <br></br>
+      <Grid>
+        <Grid.Row centered>
+            <Grid.Column width={8}>
         <Form onSubmit={this.handleSubmit}>
         <Form.Group></Form.Group>
             <Form.Group widths='equal'>
@@ -80,6 +84,7 @@ class NewNote extends React.Component {
                   // error={errors.title && 'Enter a title'}
                   />
                   </Form.Group>
+                  <br></br>
                     <Form.Group widths='equal'>
                   <textarea
                     as={<Form.Input />}
@@ -92,8 +97,14 @@ class NewNote extends React.Component {
                   // error={errors.content && 'must have content'}
                  />
                  </Form.Group>
-                <Form.Field control={Button}>Create Note</Form.Field>
+                 <br></br>
+                 <div style={{textAlign: "center"}}>
+                <Button>Create Note</Button>
+                </div>
            </Form>
+           </Grid.Column>
+        </Grid.Row>
+    </Grid>
       </Container>
     </div>
   );

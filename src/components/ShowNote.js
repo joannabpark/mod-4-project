@@ -19,18 +19,28 @@ class ShowNote extends React.Component {
         <div className="ui centered card">
         <div className="content">
             <div className="header">{this.state.note.title}</div>
-            <div class="meta">updated {moment(this.state.note.updated_at).fromNow()}</div>
+            <div className="meta">updated {moment(this.state.note.updated_at).fromNow()}</div>
             <div className="description">{this.state.note.content}</div>
         </div>
-        <div className="ui bottom attached button" >
-        <Button as={Link} to={`/home/${this.state.note.id}/form`}><i className="mail icon" ></i></Button>
-        <Button as={Link} to={`/home/edit/${this.state.note.id}`}><i className="edit icon" ></i></Button>
-            <Button onClick={() => this.deleteNote(this.state.note.id)}><i className="delete icon" ></i></Button>
-        </div>
+        <div className="ui animated button" >
+        <Button animated='fade' as={Link} to={`/home/${this.state.note.id}/form`}>
+      <Button.Content visible><i className="mail icon" ></i></Button.Content>
+      <Button.Content hidden>email</Button.Content>
+    </Button>
+    <Button animated='fade' as={Link} to={`/home/edit/${this.state.note.id}`}>
+      <Button.Content visible><i className="edit icon" ></i></Button.Content>
+      <Button.Content hidden>edit</Button.Content>
+    </Button>
+    <Button animated='fade' onClick={() => this.deleteNote(this.state.note.id)}>
+      <Button.Content visible><i className="trash icon" ></i></Button.Content>
+      <Button.Content hidden>delete</Button.Content>
+    </Button>
+  </div>
         </div>
         </Container>
     )
 }
+
 componentDidMount() {
     const token = localStorage.getItem('app_token')
 
