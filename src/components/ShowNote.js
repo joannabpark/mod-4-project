@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { deleteNote } from '../actions/notes'
 import moment from 'moment';
 import { Container, Button } from 'semantic-ui-react'
+// import ContactUs from '../containers/ContactUs'
 
 class ShowNote extends React.Component {
    
@@ -11,8 +12,7 @@ class ShowNote extends React.Component {
         note: ''
     }
 
-
-    renderNote = (note) => {
+    renderNote = () => {
     return (
         <Container>
             <br></br>
@@ -23,6 +23,7 @@ class ShowNote extends React.Component {
             <div className="description">{this.state.note.content}</div>
         </div>
         <div className="ui bottom attached button" >
+        <Button as={Link} to={`/home/${this.state.note.id}/form`}><i className="mail icon" ></i></Button>
         <Button as={Link} to={`/home/edit/${this.state.note.id}`}><i className="edit icon" ></i></Button>
             <Button onClick={() => this.deleteNote(this.state.note.id)}><i className="delete icon" ></i></Button>
         </div>
@@ -37,15 +38,13 @@ componentDidMount() {
       this.props.history.push('/login')
     } else {
     const noteId = this.props.match.params.id
-    console.log(noteId)
     fetch(`http://localhost:3000/notes/${noteId}`)
     .then(resp => resp.json())
     .then(data => {
         this.renderNote(data)
         this.setState({
             note : data
-        })
-        console.log(this.state.card)
+         })
         })
     }
 }
@@ -64,7 +63,6 @@ deleteNote = (id) => {
 }
 
   render() {
-      console.log('ENTERED INDIVIDUAL CARD')
     return (
         <div className="Note">
            {this.renderNote()}

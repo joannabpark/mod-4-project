@@ -3,10 +3,16 @@ import { Input, Menu } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
 import { logoutSuccess } from '../actions/user'
 import {connect} from 'react-redux'
+import { searchNotes } from '../actions/search'
 
 
 class NavBar extends React.Component {
   state = { activeItem: 'home' }
+
+  handleChange = (e) => {
+    e.persist()
+    this.props.searchNotes(e)
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -37,9 +43,9 @@ class NavBar extends React.Component {
             >New Note
         </Menu.Item>
         <Menu.Menu position='right'>
-          {/* <Menu.Item>
-            <Input icon='search' placeholder='Search...' />
-          </Menu.Item> */}
+          <Menu.Item>
+            <Input onChange={this.handleChange} icon='search' placeholder='Search...' />
+          </Menu.Item>
         <Menu.Item position='right'>
               {
                 this.props.user.id
@@ -66,12 +72,14 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    search: state.search
   }
 }
 
 const mapDispatchToProps = {
-  logoutSuccess
+  logoutSuccess,
+  searchNotes
 }
 
 
